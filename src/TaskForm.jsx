@@ -1,0 +1,118 @@
+// TaskForm.js
+import React, { useState } from 'react';
+
+const TaskForm = () => {
+  const [formData, setFormData] = useState({
+    title: '',
+    description: '',
+    status: 'to-do',
+    dueDate: '',
+  });
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData((prevData) => ({
+      ...prevData,
+      [name]: value,
+    }));
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    console.log('Task submission logic goes here', formData);
+    // You'll handle task submission here (e.g., call an API to create or update a task)
+  };
+
+  return (
+    <div style={styles.container}>
+      <h2 style={styles.title}>Task Form</h2>
+      <form onSubmit={handleSubmit} style={styles.form}>
+        <label style={styles.label}>
+          Title:
+          <input
+            type="text"
+            name="title"
+            value={formData.title}
+            onChange={handleChange}
+            style={styles.input}
+            required
+          />
+        </label>
+        <br />
+        <label style={styles.label}>
+          Description:
+          <textarea
+            name="description"
+            value={formData.description}
+            onChange={handleChange}
+            style={{ ...styles.input, height: '80px' }}
+            required
+          />
+        </label>
+        <br />
+        <label style={styles.label}>
+          Status:
+          <select
+            name="status"
+            value={formData.status}
+            onChange={handleChange}
+            style={styles.input}
+          >
+            <option value="to-do">To Do</option>
+            <option value="in-progress">In Progress</option>
+            <option value="completed">Completed</option>
+          </select>
+        </label>
+        <br />
+        <label style={styles.label}>
+          Due Date:
+          <input
+            type="date"
+            name="dueDate"
+            value={formData.dueDate}
+            onChange={handleChange}
+            style={styles.input}
+          />
+        </label>
+        <br />
+        <button type="submit" style={styles.button}>
+          Submit Task
+        </button>
+      </form>
+    </div>
+  );
+};
+
+const styles = {
+  container: {
+    width: '400px',
+    margin: 'auto',
+    marginTop: '50px',
+  },
+  title: {
+    textAlign: 'center',
+    fontSize: '1.5rem',
+    marginBottom: '20px',
+  },
+  form: {
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  label: {
+    marginBottom: '10px',
+  },
+  input: {
+    padding: '8px',
+    marginBottom: '15px',
+  },
+  button: {
+    padding: '10px',
+    backgroundColor: '#4CAF50',
+    color: 'white',
+    cursor: 'pointer',
+  },
+};
+
+export default TaskForm;

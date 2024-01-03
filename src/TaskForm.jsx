@@ -38,44 +38,9 @@ const TaskForm = () => {
             required
           />
         </label>
-        <br />
-        <label style={styles.label}>
-          Description:
-          <textarea
-            name="description"
-            value={formData.description}
-            onChange={handleChange}
-            style={{ ...styles.input, height: '80px' }}
-            required
-          />
-        </label>
-        <br />
-        <label style={styles.label}>
-          Status:
-          <select
-            name="status"
-            value={formData.status}
-            onChange={handleChange}
-            style={styles.input}
-          >
-            <option value="to-do">To Do</option>
-            <option value="in-progress">In Progress</option>
-            <option value="completed">Completed</option>
-          </select>
-        </label>
-        <br />
-        <label style={styles.label}>
-          Due Date:
-          <input
-            type="date"
-            name="dueDate"
-            value={formData.dueDate}
-            onChange={handleChange}
-            style={styles.input}
-          />
-        </label>
-        <br />
-        <button type="submit" style={styles.button}>
+
+        
+        <button type="submit" className='btn'>
           Submit Task
         </button>
       </form>
@@ -107,12 +72,7 @@ const styles = {
     padding: '8px',
     marginBottom: '15px',
   },
-  button: {
-    padding: '10px',
-    backgroundColor: '#4CAF50',
-    color: 'white',
-    cursor: 'pointer',
-  },
+
 };
 
 export default TaskForm;

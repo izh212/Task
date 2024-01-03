@@ -49,7 +49,7 @@ const Login = () => {
           />
         </label>
         <br />
-        <button type="submit" style={styles.button}>
+        <button type="submit" className='btn'>
           Login
         </button>
       </form>
@@ -79,12 +79,7 @@ const styles = {
     padding: '8px',
     marginBottom: '15px',
   },
-  button: {
-    padding: '10px',
-    backgroundColor: '#4CAF50',
-    color: 'white',
-    cursor: 'pointer',
-  },
+
 };
 
 export default Login;

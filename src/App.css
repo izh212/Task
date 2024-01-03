@@ -1,23 +1,52 @@
-*{
+* {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
     font-family: 'Montserrat', sans-serif;
 }
 
-.navbar{
+.navbar {
     display: flex;
-   gap: 1.5rem;
-   list-style: none;
-   background-color: black;
+    gap: 1.5rem;
+    list-style: none;
+    background-color: black;
     align-items: center;
     justify-content: center;
-   height: 50px;
-   
+    height: 50px;
+
 }
 
-.navbar li a{
+.navbar li a {
     color: white;
     text-decoration: none;
-    
+
+}
+.tasks {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 2%;
+}
+
+
+.task {
+    display: flex;
+    flex-direction: column;
+    padding: 2% 0  2% 1%;
+    border: 1px rgb(61, 61, 61) solid;
+    width: 50%;
+}
+
+.btn {
+    border: none;
+    padding: 10px;
+    color: white;
+    font-size: 14px;
+    border-radius: 20px;
+    background-color: black;
+
+}
+
+.delete {
+    background-color: red;
 }

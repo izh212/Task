@@ -1,5 +1,7 @@
 // Register.js
 import React, { useState } from 'react';
+import ajax from 'ajax';
+import Login from './Login';
 
 const Register = () => {
   const [formData, setFormData] = useState({
@@ -16,11 +18,28 @@ const Register = () => {
     }));
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log('Registration logic goes here', formData);
-    // You'll handle user registration here (e.g., call a registration API)
+  
+    try {
+      const response = await fetch('http://localhost:3001/register', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+      });
+  
+      if (response.status === 201) {
+        return <Login/>;
+      } else {
+        console.error(`Failed with status: ${response.status}`);
+      }
+    } catch (error) {
+      console.error('Error:', error);
+    }
   };
+  
 
   return (
     <div style={styles.container}>
@@ -62,7 +81,7 @@ const Register = () => {
           />
         </label>
         <br />
-        <button type="submit" style={styles.button}>
+        <button type="submit" className='btn'>
           Register
         </button>
       </form>
@@ -91,12 +110,6 @@ const styles = {
   input: {
     padding: '8px',
     marginBottom: '15px',
-  },
-  button: {
-    padding: '10px',
-    backgroundColor: '#4CAF50',
-    color: 'white',
-    cursor: 'pointer',
   },
 };
 

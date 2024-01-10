@@ -6,18 +6,20 @@ import Login from './Login';
 import Register from './Register';
 import TaskList from './TaskList';
 import TaskForm from './TaskForm';
-import UserProfile from './UserProfile';
 import Navbar from './Navbar';
+import PrivateRoute from './PrivateRoute.';
 
 const App = () => {
   return (
     <Router>
-      <Navbar />
+      <Navbar user={false}/>
       <Routes>
-        <Route path="/" element={<Login/>} />
+        <Route path="/"  element={<Login/> }  />
         <Route path="/register" element={<Register/>} />
-        <Route path="/tasks" element={<TaskList/>} />
-        <Route path="/add-task" element={<TaskForm/>} />
+        <Route element={<PrivateRoute user={false}/>}>
+              <Route path='/tasks' element={<TaskList/>} />
+              <Route path='/add-task' element={<TaskForm/>} />
+          </Route>
       </Routes>
     </Router>
   );

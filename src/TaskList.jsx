@@ -2,7 +2,6 @@ import Task from "./Task"
 
 
 function TaskList() {
-
   return (
     <>
     <div className="tasks">

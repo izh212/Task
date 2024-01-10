@@ -2,22 +2,24 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-const Navbar = () => {
+const Navbar = ({user}) => {
   return (
     <nav >
       <ul className='navbar'>
-        <li>
+        {user ? <>
+          <li>
           <Link to="/tasks">Task List</Link>
         </li>
         <li>
           <Link to="/add-task">Add Task</Link>
-        </li>
-        <li>
+        </li></>:<> <li>
           <Link to="/">Login</Link>
         </li>
         <li>
           <Link to="/register">Register</Link>
-        </li>
+        </li></> }
+       
+       
       </ul>
     </nav>
   );

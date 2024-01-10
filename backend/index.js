@@ -1,19 +1,16 @@
 const express = require('express')	
 const bodyparser = require('body-parser')
 const cors = require('cors')
+const {connectDB} = require('./connection')
+const UserRoutes= require('./Routes/UserRoutes')
+
+connectDB()
 
 const app = express()
 app.use(bodyparser())
 app.use(cors())
+app.use('/user', UserRoutes)
 
-const users = []
-
-
-app.post('/register', (req, res) => {
-    const { name, password, email } = req.body
-    users.push({ name, password, email })
-    res.status(201)
-})
 
 
 

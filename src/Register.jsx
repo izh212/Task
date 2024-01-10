@@ -1,13 +1,12 @@
 // Register.js
-import React, { useState } from 'react';
-import ajax from 'ajax';
-import Login from './Login';
+import { useState } from "react";
+import {Navigate} from 'react-router-dom'
 
 const Register = () => {
   const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    password: '',
+    name: "",
+    email: "",
+    password: "",
   });
 
   const handleChange = (e) => {
@@ -20,68 +19,56 @@ const Register = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-  
-    try {
-      const response = await fetch('http://localhost:3001/register', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(formData),
-      });
-  
-      if (response.status === 201) {
-        return <Login/>;
-      } else {
-        console.error(`Failed with status: ${response.status}`);
-      }
-    } catch (error) {
-      console.error('Error:', error);
+    const response = await fetch("http://localhost:3001/user/register", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(formData),
+    })
+    if (response.status === 201) {
+      return <Navigate to="/" />
+     
+    } else {
+      console.log("something went wrong");
     }
   };
-  
 
   return (
     <div style={styles.container}>
       <h2 style={styles.title}>Register</h2>
       <form onSubmit={handleSubmit} style={styles.form}>
-        <label style={styles.label}>
-          Name:
-          <input
-            type="text"
-            name="name"
-            value={formData.name}
-            onChange={handleChange}
-            style={styles.input}
-            required
-          />
-        </label>
+        <input
+          placeholder="Name"
+          type="text"
+          name="name"
+          value={formData.name}
+          onChange={handleChange}
+          style={styles.input}
+          required
+        />
         <br />
-        <label style={styles.label}>
-          Email:
-          <input
-            type="email"
-            name="email"
-            value={formData.email}
-            onChange={handleChange}
-            style={styles.input}
-            required
-          />
-        </label>
+        <input
+          placeholder="Email"
+          type="email"
+          name="email"
+          value={formData.email}
+          onChange={handleChange}
+          style={styles.input}
+          required
+        />
         <br />
-        <label style={styles.label}>
-          Password:
-          <input
-            type="password"
-            name="password"
-            value={formData.password}
-            onChange={handleChange}
-            style={styles.input}
-            required
-          />
-        </label>
+        <input
+          placeholder="Password"
+          type="password"
+          name="password"
+          value={formData.password}
+          onChange={handleChange}
+          style={styles.input}
+          required
+        />
         <br />
-        <button type="submit" className='btn'>
+        <button type="submit" className="btn">
           Register
         </button>
       </form>
@@ -91,25 +78,25 @@ const Register = () => {
 
 const styles = {
   container: {
-    width: '300px',
-    margin: 'auto',
-    marginTop: '50px',
+    width: "300px",
+    margin: "auto",
+    marginTop: "50px",
   },
   title: {
-    textAlign: 'center',
-    fontSize: '1.5rem',
-    marginBottom: '20px',
+    textAlign: "center",
+    fontSize: "1.5rem",
+    marginBottom: "20px",
   },
   form: {
-    display: 'flex',
-    flexDirection: 'column',
+    display: "flex",
+    flexDirection: "column",
   },
   label: {
-    marginBottom: '10px',
+    marginBottom: "10px",
   },
   input: {
-    padding: '8px',
-    marginBottom: '15px',
+    padding: "8px",
+    marginBottom: "15px",
   },
 };
 

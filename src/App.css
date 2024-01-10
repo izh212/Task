@@ -26,6 +26,7 @@
     flex-direction: column;
     align-items: center;
     margin-top: 2%;
+    gap: 2px;
 }
 
 
@@ -33,8 +34,9 @@
     display: flex;
     flex-direction: column;
     padding: 2% 0  2% 1%;
-    border: 1px rgb(61, 61, 61) solid;
     width: 50%;
+    background-color: rgba(105, 105, 105, 0.207);
+    box-shadow: 3px rgba(0, 0, 0, 0.30);
 }
 
 .btn {
@@ -48,5 +50,5 @@
 }
 
 .delete {
-    background-color: red;
+    background-color: #950000;
 }

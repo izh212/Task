@@ -4,7 +4,6 @@ import React, { useState } from 'react';
 const TaskForm = () => {
   const [formData, setFormData] = useState({
     title: '',
-    description: '',
     status: 'to-do',
     dueDate: '',
   });
@@ -27,9 +26,8 @@ const TaskForm = () => {
     <div style={styles.container}>
       <h2 style={styles.title}>Task Form</h2>
       <form onSubmit={handleSubmit} style={styles.form}>
-        <label style={styles.label}>
-          Title:
           <input
+            placeholder='Title'
             type="text"
             name="title"
             value={formData.title}
@@ -37,7 +35,12 @@ const TaskForm = () => {
             style={styles.input}
             required
           />
-        </label>
+          <input type="date"
+          name="dueDate"
+          value={formData.dueDate}
+          onChange={handleChange}
+          style={styles.date}
+           />
 
         
         <button type="submit" className='btn'>
@@ -53,6 +56,11 @@ const styles = {
     width: '400px',
     margin: 'auto',
     marginTop: '50px',
+  },
+  date: {
+    width: '190px',
+    margin: 'auto',
+    marginBottom: '20px',
   },
   title: {
     textAlign: 'center',
